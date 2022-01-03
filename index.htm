@@ -1,0 +1,726 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="title" content="Salon Management System">
+		<meta name="description" content="Salon booking system make easy to use to get appointment and you can easily manage your bookings.">
+		<meta name="keywords" content="beauty salon, salon booking, booking system, salon">
+				
+		<link rel="icon" href="application/uploads/img/favicon.png">
+		<title>Salon Management System</title>
+		<script type="text/javascript">"use strict";
+			const base 			= 'https://salon.hnaxes.com/';
+			const homepage 		= 'homepage';
+			const upimg 		= 'https://salon.hnaxes.com/application/uploads/img/';
+			const themeassets 	= 'https://salon.hnaxes.com/application/views/themes/redishtheme/assets/';
+			const stripePub 	= '';
+			const stripeStatus 	= '0';
+			const ppClientId 	= '';
+			const ppStatus 		= '0';
+			const weekends 		= [0,5,6,];
+			const userphone 	= '';
+		</script>
+		<link rel="stylesheet" href="application/views/themes/redishtheme/assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="application/views/themes/redishtheme/assets/css/icomoon.css">
+		<link rel="stylesheet" href="application/views/themes/redishtheme/assets/plugins/calendar/css/vanilla-calendar-min.css">
+		<link rel="stylesheet" href="application/views/themes/redishtheme/assets/css/style.css">
+		<link href="css2.css?family=Poppins:wght@100;200;300;400;500;600;700;800;900" rel="stylesheet"> 
+		<script src="recaptcha/api.js" async="" defer=""></script>
+				<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async="" src="gtag/js.js?id=UA-123456789-0"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-123456789-0');
+		</script>
+		<link rel="stylesheet" href="application/views/themes/redishtheme/assets/css/lightbox.css">
+<link rel="stylesheet" href="application/views/themes/redishtheme/assets/plugins/countries/build/css/intlTelInput.css">
+
+</head>
+<body class="">
+<div id="fscreenLoader" class="loading d-none">Loading&#8230;</div><header class="headerMain">
+	<div class="headerMainInner ">
+		<nav class="navbar">
+			<div class="container">
+				<a href="index.htm" class="brandLogo"><img src="application/uploads/img/logo2.png" alt=""></a>
+				<a href="index.htm" class="stickyLogo"><img src="application/uploads/img/logo2.png" alt=""></a>
+				<div class="ml-auto d-flex align-items-center">
+					<div class="mainMenu">
+						<ul id="myDIV">
+							<li class="bdtn active"><a href="index.htm#home">Home</a></li>
+							<li class="bdtn"><a href="index.htm#ourServices">Our Services</a></li>
+							<li class="bdtn"><a href="index.htm#gallery">Gallery</a></li>
+														<li class="bdtn"><a href="index.htm#contactUs">Contact Us</a></li>
+															<li class="bdtn"><a href="blog.html">Blog</a></li>
+													</ul>
+						<div class="mobile-menu">
+							<div class="menu-click">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+					</div>
+												<a href="login.html" class="loginBtn">Login</a>
+									</div>
+			</div>
+		</nav>
+	</div>
+
+</header>	
+	<div class="mainSection" id="home">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-7">
+					<h1>Hair & <br>Beauty</h1>
+					<p>We are waiting for you. Please make an Appointment here.</p>
+										<div class="selectionBoxMain">
+						<form id="serviceUserForm" method="post" action="https://salon.hnaxes.com/homepage/submitData">
+						<div class="formDataMain">
+							<div class="singleInput form-group">
+								<select class="custom-select selectBookNow" id="selectBookNow" name="serviceTitle" required="">
+									<option value="">Select Option</option>
+																			<option value="26" label="Makeup">Makeup</option>
+																			<option value="25" label="Nail Service">Nail Service</option>
+																			<option value="21" label="Spa">Spa</option>
+																			<option value="20" label="Haircut">Haircut</option>
+																			<option value="19" label="Hair Design">Hair Design</option>
+																	</select>
+								<span class="iconbadge"><span class="icon-shop"></span></span>
+								<span class="iconArrow"><span class="icon-cheveron-down"></span></span>
+							</div>
+							<small id="sTitleError" class="form-text text-danger d-none">Please select One Service atleast.</small>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="">Adults</label>
+										<input id="adultsVal" disabled="" data-attr="" type="number" value="0" min="1" step="1" name="serviceAdult">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="">Childrens</label>
+										<input id="childVal" disabled="" data-attr="" type="number" value="0" min="0" step="1" name="serviceChildren">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-6">
+									<label for="">Select Date</label>
+									<div class="calendarClickMenu singleInput form-group">
+										<div class="calendarInnerText"><i class="icon-calendar2"></i>
+											<input type="text" placeholder="Select Date" class="form-control dateTimePickerInput" id="datepicker" disabled="disabled" name="serviceDate" required="">
+										</div>
+									</div>
+									<small id="dateError" class="form-text text-danger d-none">Please select Date.</small>
+									<small id="notimeError" class="form-text text-danger d-none">No time available for today. Select Other Date.</small>
+								</div>
+								<div class="col-lg-6">
+									<label for="">Select Time</label>
+									<div class="singleInput form-group">
+										<select class="custom-select" id="userSelectTiming" name="serviceTiming" disabled="disabled" required="">
+											<option value="0">Select Time</option>
+										</select>
+										<span class="iconbadge"><span class="icon-time"></span></span>
+										<span class="iconArrow"><span class="icon-cheveron-down"></span></span>
+									</div>
+									<small id="timeError" class="form-text text-danger d-none">Please select Time.</small>
+								</div>
+							</div>
+							<label id="selectAgentLabel" class="d-none">Select Agent</label>
+							<div class="selectAgentMain"></div>
+							<div class="btn btn-dark formSubmitBtn disabled" disabled="disabled" id="formContinue">Continue</div>
+						</div>
+						<!-- /formDataMain -->
+						<div class="alert alert-info" id="alreadyBooked" style="display:none">Already booked this service on this Date/Time.</div>
+						<div class="afterContinueMain d-none">
+							<div class="afterContinue">
+								<img class="serviceImg" src="" alt="">
+								<ul class="serviceDetail">
+									<li><h5><span id="serviceTitle"></span></h5></li>
+									<li><span class="labels">Agent Name:</span> <span id="agentName"></span></li>
+									<li><span class="labels">Date:</span> <span id="selectedDate"></span></li>
+									<li><span class="labels">Time:</span> <span id="selectedTime"></span></li>
+									<li><span class="labels">No of guest:</span> <span id="selectedAdults"></span> Adults - <span id="selectedChildrens"></span> Children</li>
+									<li><span class="labels">Service Price:</span> $<span id="servicePersonPrice"></span></li>
+									<li><span class="labels">Total Price:</span> $<span id="serviceTotalPrice"></span></li>
+								</ul>
+							</div>
+							<div class="btn btn-outline-danger btn-block m-t-15 formChange">Change Options</div>
+							<hr>
+															<div class="form-group">
+									<label for="fullName">Username</label>
+									<div class="singleInput">
+										<input type="text" id="input-userFullName" class="form-control selectBookNow" placeholder="Username" name="userFullName">
+									</div>
+									<div id="error"></div>
+								</div>
+								<div class="form-group">
+									<label for="userEmail">Email</label>
+									<div class="singleInput">
+										<input type="email" id="input-userEmail" class="form-control selectBookNow" placeholder="user@email.com" name="userEmail">
+									</div>
+									<div id="error"></div>
+								</div>
+								<div class="form-group">
+									<label for="userPhone">Phone Number</label>
+									<div class="singleInput">
+										<input type="text" id="input-userPhone" class="form-control selectBookNow" placeholder="Type number without country code" name="userPhone">
+									</div>
+									<div id="error"></div>
+									<span id="valid-msg" class="d-none form-text text-success">✓ Valid</span>
+									<span id="error-msg" class="d-none form-text text-danger"></span>
+									<span id="empty-msg" class="d-none form-text text-danger">Please fill valid phone number first.</span>
+								</div>
+																					<!-- -->
+							<label for="">Select Payment Method</label>
+							<div class="singleInputform form-group">
+								<select class="custom-select" name="selectPayment" id="selectMethod" required="">
+									<option value="0" selected="">By Cash</option>
+																										</select>
+								<span class="iconbadge"><span class="icon-credit-card"></span></span>
+								<span class="iconArrow"><span class="icon-cheveron-down"></span></span>
+							</div>
+							<div id="payment-card" data-val="1" class="d-none">
+								<div id="card-element"><!-- A Stripe Element will be inserted here. --></div>
+								<!-- Used to display form errors. -->
+								<small id="card-errors" role="alert" class="form-text text-danger"></small>
+							</div>
+							<!-- -->
+							<div id="payment-paypal" data-val="2" class="d-none">
+								<span id="payWithPaypal" class="m-b-40"></span>
+								<small id="paypal-errors" role="alert" class="form-text text-danger"></small>
+							</div>
+							<!-- -->
+							<button class="btn btn-dark formSubmitBtn btn-block" type="submit" id="serviceSubmit" name="submit">
+								<span class="loaderBeforeSubmit">Submit</span>
+								<div class="stage d-none"><div class="dot-floating"></div></div>
+							</button>
+						</div>
+						<!-- /afterContinueMain -->
+						</form>
+					</div>
+					<!-- /selectionBoxMain -->
+				</div>
+			</div>
+		</div>
+		<div class="">
+					</div>
+	</div>
+	<!-- /mainSection -->
+
+	<div class="ourServicesSection" id="ourServices">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 text-center mx-auto">
+					<h2>Our Services</h2>
+					<p>You can book service from the cart view easily.</p>
+				</div>
+			</div>
+			<!-- /row -->
+			<div class="row">
+									
+					<div class="col-lg-4 col-md-6 mx-auto text-center">
+						<div class="servicesBox">
+							<div class="servicesThumb" style="background-image: url(application/uploads/img/makeup6.jpg)">
+							</div><!-- /.servicesThumb -->
+							<h4>Makeup</h4>
+							<div class="serviceInfoMain">
+								<div class="media mb-3">
+									<i class="icon-clock serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Duration:</p>
+										<p class="serviceInfoValue">02:00</p>
+									</div>
+								</div>
+								<div class="media mb-3">
+									<i class="icon-coin-dollar serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Price/person:</p>
+										<p class="serviceInfoValue">$10</p>
+									</div>
+								</div>
+								<div class="media">
+									<i class="icon-users serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Capacity/service:</p>
+										<p class="serviceInfoValue">3</p>
+									</div>
+								</div>
+								<a href="#home" class="booknowBtn btn btn-dark" data-value="26">Book Now</a>
+							</div>
+							
+						</div><!-- /.servicesBox -->
+					</div><!-- /.col-lg-4 -->
+					
+									
+					<div class="col-lg-4 col-md-6 mx-auto text-center">
+						<div class="servicesBox">
+							<div class="servicesThumb" style="background-image: url(application/uploads/img/nail41.jpg)">
+							</div><!-- /.servicesThumb -->
+							<h4>Nail Service</h4>
+							<div class="serviceInfoMain">
+								<div class="media mb-3">
+									<i class="icon-clock serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Duration:</p>
+										<p class="serviceInfoValue">02:00</p>
+									</div>
+								</div>
+								<div class="media mb-3">
+									<i class="icon-coin-dollar serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Price/person:</p>
+										<p class="serviceInfoValue">$7.5</p>
+									</div>
+								</div>
+								<div class="media">
+									<i class="icon-users serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Capacity/service:</p>
+										<p class="serviceInfoValue">4</p>
+									</div>
+								</div>
+								<a href="#home" class="booknowBtn btn btn-dark" data-value="25">Book Now</a>
+							</div>
+							
+						</div><!-- /.servicesBox -->
+					</div><!-- /.col-lg-4 -->
+					
+									
+					<div class="col-lg-4 col-md-6 mx-auto text-center">
+						<div class="servicesBox">
+							<div class="servicesThumb" style="background-image: url(application/uploads/img/spa1.jpg)">
+							</div><!-- /.servicesThumb -->
+							<h4>Spa</h4>
+							<div class="serviceInfoMain">
+								<div class="media mb-3">
+									<i class="icon-clock serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Duration:</p>
+										<p class="serviceInfoValue">01:00</p>
+									</div>
+								</div>
+								<div class="media mb-3">
+									<i class="icon-coin-dollar serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Price/person:</p>
+										<p class="serviceInfoValue">$10</p>
+									</div>
+								</div>
+								<div class="media">
+									<i class="icon-users serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Capacity/service:</p>
+										<p class="serviceInfoValue">8</p>
+									</div>
+								</div>
+								<a href="#home" class="booknowBtn btn btn-dark" data-value="21">Book Now</a>
+							</div>
+							
+						</div><!-- /.servicesBox -->
+					</div><!-- /.col-lg-4 -->
+					
+									
+					<div class="col-lg-4 col-md-6 mx-auto text-center">
+						<div class="servicesBox">
+							<div class="servicesThumb" style="background-image: url(application/uploads/img/haircut51.jpg)">
+							</div><!-- /.servicesThumb -->
+							<h4>Haircut</h4>
+							<div class="serviceInfoMain">
+								<div class="media mb-3">
+									<i class="icon-clock serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Duration:</p>
+										<p class="serviceInfoValue">01:00</p>
+									</div>
+								</div>
+								<div class="media mb-3">
+									<i class="icon-coin-dollar serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Price/person:</p>
+										<p class="serviceInfoValue">$4</p>
+									</div>
+								</div>
+								<div class="media">
+									<i class="icon-users serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Capacity/service:</p>
+										<p class="serviceInfoValue">10</p>
+									</div>
+								</div>
+								<a href="#home" class="booknowBtn btn btn-dark" data-value="20">Book Now</a>
+							</div>
+							
+						</div><!-- /.servicesBox -->
+					</div><!-- /.col-lg-4 -->
+					
+									
+					<div class="col-lg-4 col-md-6 mx-auto text-center">
+						<div class="servicesBox">
+							<div class="servicesThumb" style="background-image: url(application/uploads/img/hairdesign41.jpg)">
+							</div><!-- /.servicesThumb -->
+							<h4>Hair Design</h4>
+							<div class="serviceInfoMain">
+								<div class="media mb-3">
+									<i class="icon-clock serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Duration:</p>
+										<p class="serviceInfoValue">02:30</p>
+									</div>
+								</div>
+								<div class="media mb-3">
+									<i class="icon-coin-dollar serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Price/person:</p>
+										<p class="serviceInfoValue">$15.5</p>
+									</div>
+								</div>
+								<div class="media">
+									<i class="icon-users serviceInfoicon"></i>
+									<div class="media-body">
+										<p class="serviceInfoHeading">Capacity/service:</p>
+										<p class="serviceInfoValue">5</p>
+									</div>
+								</div>
+								<a href="#home" class="booknowBtn btn btn-dark" data-value="19">Book Now</a>
+							</div>
+							
+						</div><!-- /.servicesBox -->
+					</div><!-- /.col-lg-4 -->
+					
+								
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /ourServicesSection -->
+		<div class="gallerySection" id="gallery">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-8 text-center mx-auto text-center">
+					<div class="galleryTitlesSection">
+						<h2>Services Gallery</h2>
+						<p>We've made a list of suggested activities based on your interests.Browse through our most popular
+						Hotels!Our Featured Tours can help you find the trip that's perfect for you!.</p>
+					</div><!-- /.rt-section-title-wrapper- -->
+				</div><!-- /.col-lg-12 -->
+			</div>
+
+			<div class="row">
+				<div class="col-12">
+					<ul class="filterList">
+						<li data-filter="*" class="active">All</li>
+													<li data-filter=".cg7">Hair Design</li>
+													<li data-filter=".cg8">Haircut</li>
+													<li data-filter=".cg9">Spa</li>
+													<li data-filter=".cg10">Nail Service</li>
+													<li data-filter=".cg11">Makeup</li>
+											</ul>
+				</div><!-- /.col-12 -->
+			</div><!-- /.row -->
+			<div class="row grid galleryLists">
+								<div class="col-lg-3 col-md-6 grid-item cg7">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/hairdesign1.jpg" style="background-image: url(application/uploads/gallery/hairdesign1.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Hair design 1</h6>
+							<p>
+								<span>Hair design 1 Short Detail.<br></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg7">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/hairdesign2.jpg" style="background-image: url(application/uploads/gallery/hairdesign2.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Hair design 2</h6>
+							<p>
+								<span>Hair design 2 Short Detail.<br></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg7">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/hairdesign3.jpg" style="background-image: url(application/uploads/gallery/hairdesign3.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Hair design 3</h6>
+							<p>
+								<span>Hair design 3 Short Detail.<br></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg7">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/hairdesign4.jpg" style="background-image: url(application/uploads/gallery/hairdesign4.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Hair design 4</h6>
+							<p>
+								<span>Hair design 4 Short Detail.<br></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg8">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/haircut1.jpg" style="background-image: url(application/uploads/gallery/haircut1.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Haircut 1</h6>
+							<p>
+								<span>Haircut 1 Short Detail.<br></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg8">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/haircut2.jpg" style="background-image: url(application/uploads/gallery/haircut2.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Haircut 2</h6>
+							<p>
+								<span>Haircut 2 Short Detail.<br></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg8">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/haircut3.jpg" style="background-image: url(application/uploads/gallery/haircut3.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Haircut 3</h6>
+							<p>
+								<span>Haircut 3 Short Detail.<br></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg9">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/spa1.jpg" style="background-image: url(application/uploads/gallery/spa1.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Spa 1</h6>
+							<p>
+								<span>Spa 1 Short Detail.<br></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg9">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/spa2.jpg" style="background-image: url(application/uploads/gallery/spa2.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Spa 2</h6>
+							<p>
+								<span>Spa 2 Short Detail.<br></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg9">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/spa3.jpg" style="background-image: url(application/uploads/gallery/spa3.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Spa 3</h6>
+							<p>
+								<span>Spa 3 Short Detail.<br></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg10">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/nail1.jpg" style="background-image: url(application/uploads/gallery/nail1.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6> Nail Service 1</h6>
+							<p>
+								<span><p>Nail service 1 Short Detail.</p></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg10">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/nail2.jpg" style="background-image: url(application/uploads/gallery/nail2.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6> Nail Service 2</h6>
+							<p>
+								<span><p>Nail service 2 Short Detail.</p></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg10">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/nail3.jpg" style="background-image: url(application/uploads/gallery/nail3.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6> Nail Service 3</h6>
+							<p>
+								<span><p>Nail service 3 Short Detail.</p></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg11">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/makeup1.jpg" style="background-image: url(application/uploads/gallery/makeup1.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Makeup 1</h6>
+							<p>
+								<span><p>Makeup 1 Short Detail.</p></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg11">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/makeup2.jpg" style="background-image: url(application/uploads/gallery/makeup2.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Makeup 2</h6>
+							<p>
+								<span><p>Makeup 2 Short Detail.</p></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								<div class="col-lg-3 col-md-6 grid-item cg11">
+					<a class="d-block portfolioBox wow fade-in-bottom" href="application/uploads/gallery/makeup3.jpg" style="background-image: url(application/uploads/gallery/makeup3.jpg)">
+						<div class="portfolioBoxOverlay"></div><!-- /.portfolioBoxOverlay -->
+						<div class="portfolioBoxInnerContent">
+							<h6>Makeup 3</h6>
+							<p>
+								<span><p>Makeup 3 Short Detail.</p></span>
+							</p>
+						</div><!-- /.portfolioBoxInnerContent -->
+					</a><!-- /.portfolioBox -->
+				</div><!-- /.col-md-4 -->
+								
+			</div><!-- /.row -->
+			
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /gallerySection -->
+	
+	<div class="contactSection" id="contactUs">
+		<div class="">
+					</div>
+		<div class="contactImgMain"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-7">
+					<h2>Get In Touch</h2>
+					<p>Any kind of travel information don't hesitate to contact with us for imiditate customer support. We are love to hear from you</p>
+					<div class="alert alert-info" id="somethngwrng" style="display:none">Something wrong please try again.</div>
+					<div class="alert alert-success" id="submitedEmail" style="display:none">Your message sent successfully. We will contact you in 48 hrs.</div>
+					<form id="mailmesubmit" action="https://salon.hnaxes.com/homepage/mailme" class="rt-form rt-line-form">
+						<div class="form-group">
+							<input type="text" id="cForm-name" placeholder="Name (with no space)" name="name" class="customInputs form-control">
+							<div id="error"></div>
+						</div>
+						<div class="form-group">
+							<input type="email" id="cForm-email" placeholder="Email" name="email" class="customInputs form-control">
+							<div id="error"></div>
+						</div>
+						<div class="form-group">
+							<textarea placeholder="Message" id="cForm-message" rows="4" name="message" class="customTextarea form-control"></textarea>
+							<div id="error"></div>
+						</div>
+						                        <button type="submit" class="customFormButton">
+							<span class="loaderBeforeC">Submit Now</span>
+							<div class="loaderBeforeCg p-l-40 p-r-40 p-t-5 p-b-5 d-none"><div class="dot-floating"></div></div>
+						</button>
+                    </form>
+				</div>
+			</div>
+			<!-- /row -->
+			
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /contactSection -->
+	<div class="contactMapArea">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 mx-auto col-md-6">
+						<div class="contactThreeColumns">
+							<div class="iconThumb">
+								<img src="application/views/themes/redishtheme/assets/images/con-1.png" alt="box-icon" draggable="false">
+							</div><!-- /.iconThumb -->
+							<div class="iconboxContent">
+								<h5>Our Address</h5>
+								<p>Skippergata 33, 0154<br>
+Oslo, Norway</p>
+							</div><!-- /.iconboxContent -->
+						</div><!-- /.rt-single-icon-box -->
+					</div><!-- /.col-lg-4 -->
+					<div class="col-lg-4 mx-auto col-md-6">
+						<div class="contactThreeColumns" data-wow-duration="1.5s">
+							<div class="iconThumb">
+								<img src="application/views/themes/redishtheme/assets/images/con-2.png" alt="box-icon" draggable="false">
+							</div><!-- /.iconThumb -->
+							<div class="iconboxContent">
+								<h5>Phone & Email</h5>
+								<p>(123) 456 7892 <br>
+								<a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="86e2e3f5e5eaeffeb7c6e1ebe7efeaa8e5e9eb">[email&#160;protected]</a></p>
+							</div><!-- /.iconboxContent -->
+						</div><!-- /.rt-single-icon-box -->
+					</div><!-- /.col-lg-4 -->
+					<div class="col-lg-4 mx-auto col-md-6">
+						<div class="contactThreeColumns" data-wow-duration="2s">
+							<div class="iconThumb">
+								<img src="application/views/themes/redishtheme/assets/images/con-3.png" alt="box-icon" draggable="false">
+							</div><!-- /.iconThumb -->
+							<div class="iconboxContent">
+								<h5>Stay In Touch</h5>
+								<ul class="contactSocial">
+									<li><a href="#fb"><i class="icon-facebook"></i></a></li>
+									<li><a href="#twt"><i class="icon-twitter"></i></a></li>
+									<li><a href="#in"><i class="icon-linkedin2"></i></a></li>
+								</ul>
+							</div><!-- /.iconboxContent -->
+						</div><!-- /.rt-single-icon-box -->
+					</div><!-- /.col-lg-4 -->
+				</div><!-- /.row -->
+			</div><!-- /.container -->
+			<div class="googleMap">
+				<iframe src="maps/embed.html?pb=!1m14!1m8!1m3!1d64033.28149209223!2d10.7247325!3d59.898285!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e61f267f039:0x7e92605fd3231e9a!2sOslo, Norway!5e0!3m2!1sen!2s!4v1595953265617!5m2!1sen!2s" width="100%" height="582" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+			</div>
+	</div>
+	<!-- /contactMapArea -->	
+
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="copyrightText">Copyright © 2021. All Rights Reserved By <a href="index.htm">Salon Management System</a></div>
+			</div>
+			<div class="col-lg-6">
+				<div class="footerNav">
+											<a href="page/terms-conditions.html">Terms & Conditions</a>
+											<a href="page/privacy-policy.html">Privacy Policy</a>
+										<a href="index.htm#contactUs">Contact Us</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer><script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="application/views/themes/redishtheme/assets/js/jquery.min.js"></script>
+<script src="application/views/themes/redishtheme/assets/js/popper.min.js"></script>
+<script src="application/views/themes/redishtheme/assets/js/bootstrap.min.js"></script>
+<script src="application/views/themes/redishtheme/assets/js/bootstrap-input-spinner.js"></script>
+<script src="application/views/themes/redishtheme/assets/js/isotope.pkgd.min.js"></script>
+<script src="application/views/themes/redishtheme/assets/js/app.js"></script>
+<script src="application/views/themes/redishtheme/assets/plugins/moment/moment.min.js"></script>
+<script src="application/views/themes/redishtheme/assets/plugins/datepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="application/views/themes/redishtheme/assets/js/magnific.popup.min.js"></script>
+	<script src="application/views/themes/redishtheme/assets/plugins/countries/prism.js"></script>
+	<script src="application/views/themes/redishtheme/assets/plugins/countries/build/js/intlTelInput.js"></script>
+<script src="application/views/themes/redishtheme/assets/js/default.js"></script>
+</body></html>
